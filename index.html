@@ -9,23 +9,29 @@
   <body>
     <div class="container">
       <input type="text" id="senha" />
+
       <div>
         <input type="range" id="range" value="8" min="1" max="20" />
-        <span class="tamanhoSenha">10</span>
+        <span class="mostrarTamanhoSenha">10</span>
       </div>
 
-      <div>
-        <input type="checkbox" />
-        <label>Letra maiuscula</label>
+      <div class="checkbox-item">
+        <input type="checkbox" id="letraMaiuscula" />
+        <label>Letra maiúscula</label>
       </div>
 
-      <div>
-        <input type="checkbox" />
+      <div class="checkbox-item">
+        <input type="checkbox" id="letraMinuscula" />
+        <label>Letra minúscula</label>
+      </div>
+
+      <div class="checkbox-item">
+        <input type="checkbox" id="numeros" />
         <label>Números</label>
       </div>
 
-      <div>
-        <input type="checkbox" />
+      <div class="checkbox-item">
+        <input type="checkbox" id="simbolos" />
         <label>Símbolos</label>
       </div>
 

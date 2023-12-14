@@ -31,8 +31,8 @@ input[type="range"] {
 }
 
 input[type="checkbox"] {
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
 }
 
 .container label {
@@ -47,4 +47,9 @@ button {
   font-size: 17px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
 }
