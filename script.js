@@ -3,7 +3,7 @@ const inputRange = document.querySelector("#range");
 const botaoGerarSenha = document.querySelector("button");
 
 const cheackboxMaiusculo = document.querySelector("#letraMaiuscula");
-const cheackboxSMinusculo = document.querySelector("#letraMinuscula");
+const cheackboxMinusculo = document.querySelector("#letraMinuscula");
 const cheackboxSimbolos = document.querySelector("#simbolos");
 const cheackboxNumeros = document.querySelector("#numeros");
 
@@ -26,21 +26,37 @@ function mostrarRange() {
 mostrarRange();
 
 function gerarSenha() {
-  const caracteresSelecionados = [
-    ...(cheackboxNumeros.checked ? numeros : []),
-    ...(cheackboxSimbolos.checked ? simbolos : []),
-    ...(cheackboxSMinusculo.checked ? letras : []),
-    ...(cheackboxMaiusculo.checked ? letrasMaiusculas : []),
-  ];
-
-  if (!caracteresSelecionados.length) return;
+  let numCheck = cheackboxNumeros.checked ? 1 : 0;
+  let simCheck = cheackboxSimbolos.checked ? 1 : 0;
+  let minCheck = cheackboxMinusculo.checked ? 1 : 0;
+  let maiCheck = cheackboxMaiusculo.checked ? 1 : 0;
+  let checkCount = numCheck + simCheck + maiCheck + minCheck;
 
   let senha = "";
 
-  for (let i = 0; i < inputRange.value; i++) {
-    /* prettier-ignore */
-    senha += caracteresSelecionados[Math.round(Math.random() * (caracteresSelecionados.length - 1))];
+  for (let i = 0; i < inputRange.value / checkCount; i++) {
+    if (cheackboxNumeros.checked) {
+      senha += numeros[Math.round(Math.random() * (numeros.length - 1))];
+    }
+    if (cheackboxSimbolos.checked) {
+      senha += simbolos[Math.round(Math.random() * (simbolos.length - 1))];
+    }
+    if (cheackboxMinusculo.checked) {
+      senha += letras[Math.round(Math.random() * (letras.length - 1))];
+    }
+    if (cheackboxMaiusculo.checked) {
+      senha +=
+        letrasMaiusculas[
+          Math.round(Math.random() * (letrasMaiusculas.length - 1))
+        ];
+    }
   }
 
-  inputSenha.value = senha;
+  let novaSenha = senha
+    .toString()
+    .split("")
+    .sort(() => Math.random() - 0.5)
+    .join("");
+
+  inputSenha.value = novaSenha;
 }
